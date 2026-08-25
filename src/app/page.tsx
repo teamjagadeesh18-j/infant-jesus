@@ -112,33 +112,34 @@ export default function Home() {
       
       {/* School Specific Animated Hero Section with 3D Neural Brain Visual */}
       <AuroraBackground showRadialGradient={true}>
-        <div className="relative z-10 max-w-[1250px] mx-auto px-6 py-12 lg:py-16 grid lg:grid-cols-12 gap-8 items-center w-full">
+        <div className="relative z-10 max-w-[1250px] mx-auto px-4 sm:px-6 py-6 sm:py-10 lg:py-16 grid lg:grid-cols-12 gap-6 lg:gap-8 items-center w-full min-w-0 max-w-full overflow-hidden sm:overflow-visible">
           {/* Left Column Content */}
-          <div className="lg:col-span-7 space-y-6 text-left font-heading">
-            <span className="inline-block px-4 py-1.5 rounded-[9999px] bg-[#e5e7ff] text-[#4457ff] text-xs font-semibold uppercase tracking-wider font-body">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-left font-heading min-w-0 max-w-full">
+            <span className="inline-flex flex-wrap items-center max-w-full px-3.5 sm:px-4 py-1.5 rounded-[9999px] bg-[#e5e7ff] text-[#4457ff] text-[11px] sm:text-xs font-semibold uppercase tracking-wider font-body leading-normal border border-[#d2d6ff] shadow-sm">
               📍 Vallalar Nagar, Pattabiram • Rating 4.4★
             </span>
-      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181c31] leading-[1.18] font-heading">
+            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-[#181c31] leading-[1.2] sm:leading-[1.18] font-heading max-w-full break-words [overflow-wrap:break-word]">
               A School Built on Faith, Family & Genuine Care
             </h1>
-            <p className="text-lg sm:text-xl text-[#757693] max-w-xl font-body leading-relaxed">
+            <p className="text-base sm:text-xl text-[#757693] max-w-xl font-body leading-relaxed max-w-full break-words [overflow-wrap:break-word]">
               Providing structured Matriculation education with dedicated teachers, modern facilities, and individual guidance for every student.
             </p>
-            <div className="pt-2 flex flex-wrap items-center gap-4 font-body">
+            <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 font-body max-w-full">
               <OrbitBorderButton
                 label="Apply Now"
-                link="#connect"
+                link="/apply"
+                padding="12px 22px 12px 22px"
                 colors={{ fill: "#4457ff", textColor: "#ffffff" }}
                 stroke={{ color: "#7988ff", size: 30, speed: 50, direction: "ccw", hoverFill: 100 }}
               />
-              <a href="#about" className="px-6 py-3.5 rounded-[9999px] border border-[#e5e7eb] text-[#181c31] bg-white text-base font-medium hover:bg-slate-50 transition-all">
+              <a href="#about" className="px-5 py-3 sm:px-6 sm:py-3.5 rounded-[9999px] border border-[#e5e7eb] text-[#181c31] bg-white text-sm sm:text-base font-medium hover:bg-slate-50 transition-all shadow-sm shrink-0">
                 Explore Curriculum
               </a>
             </div>
           </div>
 
           {/* Right Column (Top Right Position): 3D Brain & Neural Particle Visual */}
-          <div className="lg:col-span-5 relative w-full flex items-center justify-center min-h-[420px]">
+          <div className="lg:col-span-5 relative w-full flex items-center justify-center min-h-[340px] sm:min-h-[420px] py-1 sm:py-0 overflow-hidden sm:overflow-visible">
             <NeuralDiagram />
           </div>
         </div>

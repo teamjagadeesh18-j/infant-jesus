@@ -18,6 +18,11 @@
   --radius-badge: 9999px;
 }
 
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'DM Sans', 'Inter', sans-serif;
   background-color: #f3f5ff;

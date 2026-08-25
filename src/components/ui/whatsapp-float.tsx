@@ -7,7 +7,7 @@ export function WhatsAppFloat() {
   const whatsappUrl = "https://wa.me/917448507758?text=" + message;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 group">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-2 group pb-[env(safe-area-inset-bottom)] pointer-events-auto">
       <span className="hidden md:inline-block px-3.5 py-1.5 rounded-full bg-[#0f172a] text-white text-xs font-bold shadow-lg border border-[#334155] transition-all group-hover:scale-105">
         Chat with Admissions 💬
       </span>
