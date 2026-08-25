@@ -1,4 +1,5 @@
 "use client";
+import { TextEffect } from '@/components/core/text-effect';
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
@@ -261,7 +262,7 @@ export default function SocialCards({ cards }: SocialCardsProps) {
                 <img src={card.imgUrl} loading="lazy" alt={card.alt || `Card ${index}`} className="absolute inset-0 w-full h-full object-cover z-10" />
                 {card.alt && (
                   <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-3 z-20">
-                    <p className="text-xs font-semibold text-white truncate font-body">{card.alt}</p>
+                    <TextEffect as="p" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="text-xs font-semibold text-white truncate font-body">{card.alt}</TextEffect>
                   </div>
                 )}
               </div>

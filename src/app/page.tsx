@@ -1,4 +1,5 @@
 "use client";
+import { TextEffect } from '@/components/core/text-effect';
 
 import SchoolMessageSection from "@/components/ui/school-message-section";
 
@@ -118,12 +119,12 @@ export default function Home() {
             <span className="inline-flex flex-wrap items-center max-w-full px-3.5 sm:px-4 py-1.5 rounded-[9999px] bg-[#e5e7ff] text-[#4457ff] text-[11px] sm:text-xs font-semibold uppercase tracking-wider font-body leading-normal border border-[#d2d6ff] shadow-sm">
               📍 Vallalar Nagar, Pattabiram • Rating 4.4★
             </span>
-            <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-[#181c31] leading-[1.2] sm:leading-[1.18] font-heading max-w-full break-words [overflow-wrap:break-word]">
+            <TextEffect as="h1" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="text-2xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-[#181c31] leading-[1.2] sm:leading-[1.18] font-heading max-w-full break-words [overflow-wrap:break-word]">
               A School Built on Faith, Family & Genuine Care
-            </h1>
-            <p className="text-base sm:text-xl text-[#757693] max-w-xl font-body leading-relaxed max-w-full break-words [overflow-wrap:break-word]">
+            </TextEffect>
+            <TextEffect as="p" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="text-base sm:text-xl text-[#757693] max-w-xl font-body leading-relaxed max-w-full break-words [overflow-wrap:break-word]">
               Providing structured Matriculation education with dedicated teachers, modern facilities, and individual guidance for every student.
-            </p>
+            </TextEffect>
             <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 font-body max-w-full">
               <OrbitBorderButton
                 label="Apply Now"

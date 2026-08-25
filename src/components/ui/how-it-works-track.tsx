@@ -1,4 +1,5 @@
 "use client";
+import { TextEffect } from '@/components/core/text-effect';
 
 import React, { useRef } from "react";
 import { LazyMotion, domAnimation, m, useScroll, useTransform, useSpring, type MotionValue } from "framer-motion";
@@ -63,8 +64,8 @@ function StepRow({ step, index, progress, total }: { step: TrackStep; index: num
           <div className={`${bg} border ${border} rounded-[12px] p-3 relative overflow-hidden`}>
             <Pin className={`w-4 h-4 ${text} mb-1.5 ${isLeft ? "md:ml-auto" : ""}`} />
             <span className={`${text} text-xl font-bold`}>0{index + 1}</span>
-            <h3 className="text-base font-semibold text-neutral-800 dark:text-neutral-100 mt-1 mb-1">{step.title}</h3>
-            <p className="text-neutral-500 dark:text-neutral-400 text-xs leading-snug tracking-tight">{step.description}</p>
+            <TextEffect as="h3" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="text-base font-semibold text-neutral-800 dark:text-neutral-100 mt-1 mb-1">{step.title}</TextEffect>
+            <TextEffect as="p" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="text-neutral-500 dark:text-neutral-400 text-xs leading-snug tracking-tight">{step.description}</TextEffect>
           </div>
         </div>
       </m.div>
@@ -100,8 +101,8 @@ export default function HowItWorksTrack({
 
         {/* COMPACT: mb-16 -> mb-8 */}
         <div className="max-w-3xl mx-auto text-center mb-8 relative z-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white">{title}</h2>
-          <p className="text-neutral-500 dark:text-neutral-400 mt-2 text-sm">{subtitle}</p>
+          <TextEffect as="h2" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white">{title}</TextEffect>
+          <TextEffect as="p" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="text-neutral-500 dark:text-neutral-400 mt-2 text-sm">{subtitle}</TextEffect>
         </div>
 
         <div ref={containerRef} className="relative max-w-2xl mx-auto z-10">

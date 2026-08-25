@@ -1,5 +1,6 @@
 // Delivered by Originkit · stack: nextjs · styling: tailwind
 "use client";
+import { TextEffect } from '@/components/core/text-effect';
 
 "use client";
 
@@ -116,7 +117,7 @@ export const Section27Hero = () => (
       {/* Headline + CTAs — Figma 2288:9681, auto-layout column, gap 24, px 8 */}
       <section className="z-20 mt-11 flex w-[367px] flex-col items-center gap-6 px-2 ipad:mt-[74px] ipad:w-[603px] desktop-sm:mt-16 ipad:gap-[50px] ipad:p-[10px]">
         <div className="flex w-full flex-col items-center gap-4 ipad:gap-0">
-          <h1 className="relative h-24 w-full text-center font-geist text-[40px] leading-[48px] font-medium tracking-[-0.8px] text-white ipad:h-[58px] ipad:text-[48px] ipad:leading-[57.6px] ipad:tracking-[-0.96px] ipad:whitespace-nowrap">
+          <TextEffect as="h1" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="relative h-24 w-full text-center font-geist text-[40px] leading-[48px] font-medium tracking-[-0.8px] text-white ipad:h-[58px] ipad:text-[48px] ipad:leading-[57.6px] ipad:tracking-[-0.96px] ipad:whitespace-nowrap">
             <img
               src={asset("highlight.svg")}
               alt=""
@@ -127,12 +128,12 @@ export const Section27Hero = () => (
             <span className="relative font-canela-deck font-medium leading-[48px] text-[#0b0b0c] [font-synthesis:none]">
               Ahead.
             </span>
-          </h1>
+          </TextEffect>
 
-          <p className="w-[307px] text-center font-geist text-[16px] leading-[1.5] font-medium tracking-[-0.32px] text-[#aaadac] ipad:w-full ipad:text-[17px] ipad:tracking-[-0.34px]">
+          <TextEffect as="p" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="w-[307px] text-center font-geist text-[16px] leading-[1.5] font-medium tracking-[-0.32px] text-[#aaadac] ipad:w-full ipad:text-[17px] ipad:tracking-[-0.34px]">
             AI infrastructure for autonomous decisions and realtime
             intelligence.
-          </p>
+          </TextEffect>
         </div>
 
         <div className="flex w-full flex-col items-center gap-5 ipad:w-auto ipad:flex-row ipad:items-start">
@@ -170,9 +171,9 @@ export const Section27Hero = () => (
 
       {/* Trusted strip — Figma 2288:13045, auto-layout column, gap 28 */}
       <section className="z-20 flex w-full flex-col items-center gap-7 overflow-hidden bg-white px-4 py-8 ipad:px-0 ipad:py-10">
-        <p className="w-[232px] text-center font-geist text-[15px] leading-[1.4] font-medium text-[#646568] ipad:w-full">
+        <TextEffect as="p" preset="fade-in-blur" speedReveal={1.1} speedSegment={0.3} className="w-[232px] text-center font-geist text-[15px] leading-[1.4] font-medium text-[#646568] ipad:w-full">
           TRUSTED BY 180+ PRODUCT COMPANY WORLD WIDE
-        </p>
+        </TextEffect>
         <LogoMarquee />
       </section>
     </div>
