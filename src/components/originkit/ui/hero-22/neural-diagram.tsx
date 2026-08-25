@@ -209,21 +209,27 @@ export const NeuralDiagram = () => {
 
     // Pulse assemble / scatter continuously so the particle head is always dynamically alive
     const pulseLoop = () => {
+      if (document.hidden) {
+        animTimer = setTimeout(pulseLoop, 5000);
+        return;
+      }
       const target = canvas();
       if (target) {
-        autoState = !autoState;
-        if (autoState) {
-          const box = target.getBoundingClientRect();
-          target.dispatchEvent(
-            new MouseEvent("mousemove", {
-              clientX: box.left + box.width / 2 + (Math.random() - 0.5) * 40,
-              clientY: box.top + box.height / 2 + (Math.random() - 0.5) * 40,
-              bubbles: true,
-            })
-          );
+        const box = target.getBoundingClientRect();
+        if (box.bottom > 0 && box.top < window.innerHeight) {
+          autoState = !autoState;
+          if (autoState) {
+            target.dispatchEvent(
+              new MouseEvent("mousemove", {
+                clientX: box.left + box.width / 2 + (Math.random() - 0.5) * 40,
+                clientY: box.top + box.height / 2 + (Math.random() - 0.5) * 40,
+                bubbles: true,
+              })
+            );
+          }
         }
       }
-      animTimer = setTimeout(pulseLoop, 3500);
+      animTimer = setTimeout(pulseLoop, 5000);
     };
 
     pulseLoop();

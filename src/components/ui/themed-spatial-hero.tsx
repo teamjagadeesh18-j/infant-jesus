@@ -244,6 +244,8 @@ export function SpatialFeatureSection() {
             <img 
               src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" 
               alt="Classroom Learning at Infant Jesus Matriculation Higher Secondary School" 
+              loading="lazy"
+              decoding="async"
               className="w-full h-[360px] object-cover rounded-[24px]"
             />
           </div>

@@ -1,6 +1,5 @@
 
 import type { Metadata } from 'next';
-import { SmoothScrollProvider } from "@/components/ui/smooth-scroll-provider";
 import { DM_Serif_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { LenisSmoothScroll } from '@/components/ui/lenis-smooth-scroll';
@@ -64,13 +63,11 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body bg-[#F7FAFC] text-[#52606D] antialiased min-h-screen">
-        <SmoothScrollProvider>
         <LenisSmoothScroll>
           {children}
           <WhatsAppFloat />
         </LenisSmoothScroll>
-              </SmoothScrollProvider>
-</body>
+      </body>
     </html>
   );
 }

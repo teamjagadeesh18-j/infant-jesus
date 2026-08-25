@@ -28,8 +28,24 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
 
     const directionFactor = React.useRef<number>(1)
     const scrollThreshold = React.useRef<number>(5)
+    const containerRef = React.useRef<HTMLDivElement>(null)
+    const isVisibleRef = React.useRef<boolean>(true)
+
+    React.useEffect(() => {
+      const el = containerRef.current
+      if (!el) return
+      const observer = new IntersectionObserver(
+        (entries) => {
+          isVisibleRef.current = entries[0]?.isIntersecting ?? true
+        },
+        { threshold: 0.05 }
+      )
+      observer.observe(el)
+      return () => observer.disconnect()
+    }, [])
 
     useAnimationFrame((t, delta) => {
+      if (!isVisibleRef.current) return
       if (movable) {
         move(delta)
       } else {
@@ -52,7 +68,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
 
     return (
       <div
-        ref={ref}
+        ref={(node) => {
+          (containerRef as any).current = node;
+          if (typeof ref === "function") ref(node);
+          else if (ref) (ref as any).current = node;
+        }}
         className={cn("relative m-0 flex flex-nowrap overflow-hidden whitespace-nowrap leading-[0.8] tracking-[-2px]", className)}
         {...props}
       >

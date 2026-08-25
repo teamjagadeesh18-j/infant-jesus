@@ -26,6 +26,8 @@ export function ScrollVelocityDemo() {
                 <img
                   src={imgUrl}
                   alt="Campus Moment"
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-105"
                 />
               </div>

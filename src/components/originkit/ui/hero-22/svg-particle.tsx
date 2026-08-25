@@ -475,7 +475,25 @@ function __OriginkitBase_ParticleImage(__props) {
     let idata = null,
       bW = 0,
       bH = 0;
+    let isVisible = true;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isVisible = entry ? entry.isIntersecting : true;
+        if (isVisible && !animRef.current) {
+          animRef.current = requestAnimationFrame(draw);
+        }
+      },
+      { threshold: 0.02 }
+    );
+    observer.observe(canvas);
+
     const draw = () => {
+      if (!isVisible) {
+        animRef.current = null;
+        return;
+      }
       animRef.current = requestAnimationFrame(draw);
       const PW = canvas.width,
         PH = canvas.height;
@@ -515,13 +533,6 @@ function __OriginkitBase_ParticleImage(__props) {
       const hitSpeed = mouseSpeedRef.current;
       mouseSpeedRef.current *= 0.88;
       // Smooth the repulsion zone position each frame.
-      // lerpFactor uses a gentle square-root curve so it never drops too low:
-      //   still (0)  → 0.30  fast response
-      //   speed 30   → 0.22  light smoothing
-      //   speed 80+  → 0.15  continuous snake channel, no discrete rings
-      // The old linear formula hit 0.06 at moderate speed, stamping rings
-      // at dozens of positions. This floor of 0.15 keeps the zone moving
-      // as a single continuous shape.
       const sm = smoothMouseRef.current;
       if (active) {
         const lerpFactor = Math.max(0.08, 0.3 - hitSpeed * 0.006);
@@ -625,9 +636,6 @@ function __OriginkitBase_ParticleImage(__props) {
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < repCutoff) {
               if (!p.inZone) {
-                // Random displacement in any direction —
-                // some particles move a lot, some a little,
-                // no circle constraint so it feels organic.
                 const angle = Math.random() * Math.PI * 2;
                 const d = Math.random() * rF * 5;
                 p.repTargetX = Math.cos(angle) * d;
@@ -640,7 +648,6 @@ function __OriginkitBase_ParticleImage(__props) {
               p.inZone = false;
             }
           } else {
-            // Outside mode (original behaviour)
             if (active) {
               const dx = baseX - mx;
               const dy = baseY - my;
@@ -668,7 +675,6 @@ function __OriginkitBase_ParticleImage(__props) {
         } else {
           p.inZone = false;
         }
-        // Outside zone or repulsion off: slowly return to original position
         if (!p.inZone) {
           p.repX *= 0.97;
           p.repY *= 0.97;
@@ -707,7 +713,6 @@ function __OriginkitBase_ParticleImage(__props) {
           db = pp.b;
           da = Math.round(pp.a * alphaMul);
         } else if (ht === "hide" && hOn) {
-          // Opacity always 0 when hidden.
           let alphaMul: number;
           if (state === "idle") alphaMul = 0;
           else if (state === "assembling") alphaMul = animT;
@@ -727,7 +732,6 @@ function __OriginkitBase_ParticleImage(__props) {
         }
         if (da < 1) continue;
 
-        // ── Color mode override ────────────────────────────────────
         if (pColor === "single") {
           const sc = parseColor(scColor);
           dr = sc.r;
@@ -749,6 +753,7 @@ function __OriginkitBase_ParticleImage(__props) {
     };
     draw();
     return () => {
+      observer.disconnect();
       if (animRef.current) cancelAnimationFrame(animRef.current);
     };
   }, []);

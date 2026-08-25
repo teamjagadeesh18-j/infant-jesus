@@ -289,16 +289,38 @@ export function OrbitBorderButton(props: Props) {
         let raf = 0
         let last = 0
         let angle = 0
+        let isVisible = true
+        const el = cometRef.current
+        if (!el) return
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                isVisible = entries[0]?.isIntersecting ?? true
+                if (isVisible && !raf) {
+                    last = 0
+                    raf = requestAnimationFrame(tick)
+                }
+            },
+            { threshold: 0.05 }
+        )
+        observer.observe(el)
+
         const tick = (t: number) => {
+            if (!isVisible) {
+                raf = 0
+                return
+            }
             if (!last) last = t
             angle = (angle + (degPerSecRef.current * (t - last)) / 1000) % 360
             last = t
-            const el = cometRef.current
             if (el) el.style.transform = `rotate(${angle}deg)`
             raf = requestAnimationFrame(tick)
         }
         raf = requestAnimationFrame(tick)
-        return () => cancelAnimationFrame(raf)
+        return () => {
+            cancelAnimationFrame(raf)
+            observer.disconnect()
+        }
     }, [reducedMotion, hasBand])
 
     const animateArc = useCallback(
