@@ -48,7 +48,7 @@ function StepRow({ step, index, progress, total }: { step: TrackStep; index: num
   const segEnd = (index + 1) / total;
   const lit = useTransform(progress, [segStart, segEnd], [0, 1]);
   const scale = useTransform(lit, [0, 1], [0.5, 1]);
-  const opacity = useTransform(lit, [0, 0.35, 1], [0.2, 0.55, 1]);
+  const opacity = useTransform(lit, [0, 0.35, 1], [0.75, 0.9, 1]);
   // cardX disabled on mobile to prevent line overlap
 
   return (

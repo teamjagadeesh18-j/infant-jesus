@@ -118,11 +118,9 @@ export default function Home() {
             <span className="inline-block px-4 py-1.5 rounded-[9999px] bg-[#e5e7ff] text-[#4457ff] text-xs font-semibold uppercase tracking-wider font-body">
               📍 Vallalar Nagar, Pattabiram • Rating 4.4★
             </span>
-      <MaskTextReveal
-              text="A School Built on Faith, Family & Genuine Care"
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181c31] leading-tight font-heading"
-              direction="bottom-to-top"
-            />
+      <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181c31] leading-[1.18] font-heading">
+              A School Built on Faith, Family & Genuine Care
+            </h1>
             <p className="text-lg sm:text-xl text-[#757693] max-w-xl font-body leading-relaxed">
               Providing structured Matriculation education with dedicated teachers, modern facilities, and individual guidance for every student.
             </p>

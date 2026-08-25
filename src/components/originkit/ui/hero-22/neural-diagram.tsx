@@ -252,7 +252,7 @@ export const NeuralDiagram = () => {
     <div className="w-full max-w-[680px] mx-auto flex items-center justify-center overflow-hidden py-2">
       <div
         ref={blockRef}
-        className="relative w-[680px] h-[420px] shrink-0 origin-top scale-[0.48] min-[360px]:scale-[0.54] min-[400px]:scale-[0.60] min-[480px]:scale-[0.72] sm:scale-[0.85] md:scale-100 -mb-[210px] min-[360px]:-mb-[180px] min-[400px]:-mb-[160px] min-[480px]:-mb-[110px] sm:-mb-[50px] md:mb-0 transition-transform duration-200 bg-transparent"
+        className="relative w-full max-w-[680px] h-[360px] sm:h-[420px] mx-auto overflow-hidden bg-transparent flex items-center justify-center"
       >
       {/* Background arcs */}
       {ARCS.map((arc) => (

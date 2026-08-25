@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Menu, X, ChevronRight } from 'lucide-react';
 
 import OrbitBorderButton from '@/components/ui/orbit-border-button';
 
@@ -18,21 +18,31 @@ export function AnnouncementBar() {
 }
 
 export function SpatialHeader() {
-  return (
-    <header className="sticky top-0 z-50 bg-[#f3f5ff]/90 backdrop-blur-md border-b border-[#e5e7eb] font-body">
-      <div className="max-w-[1200px] mx-auto px-3 sm:px-6 min-h-[60px] sm:h-16 flex items-center justify-between gap-2 text-sm text-[#181c31]">
-        <a href="/" className="hover:opacity-90 transition-opacity min-w-0 shrink"><div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#4457ff] text-white flex items-center justify-center font-bold font-heading shadow-sm shrink-0">
-            I
-          </div>
-          <div className="min-w-0">
-            <span className="font-bold text-xs sm:text-base text-[#181c31] font-heading tracking-tight block truncate max-w-[160px] xs:max-w-[240px] sm:max-w-none">
-              Infant Jesus Matriculation Higher Secondary School
-            </span>
-            <span className="text-[10px] sm:text-[11px] text-[#757693] block -mt-0.5 font-medium truncate">Matriculation Campus</span>
-          </div>
-        </div></a>
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
+  return (
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#e5e7eb] font-body">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3 text-sm text-[#181c31]">
+        <a href="/" className="hover:opacity-90 transition-opacity min-w-0 shrink">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-[#4457ff] text-white flex items-center justify-center font-bold font-heading shadow-sm shrink-0">
+              I
+            </div>
+            <div className="min-w-0">
+              <span className="sm:hidden font-bold text-sm text-[#181c31] font-heading tracking-tight block whitespace-nowrap">
+                Infant Jesus Hr. Sec. School
+              </span>
+              <span className="hidden sm:block font-bold text-base text-[#181c31] font-heading tracking-tight whitespace-nowrap">
+                Infant Jesus Matriculation Higher Secondary School
+              </span>
+              <span className="text-[11px] text-[#757693] block -mt-0.5 font-medium whitespace-nowrap">
+                Matriculation Campus
+              </span>
+            </div>
+          </div>
+        </a>
+
+        {/* Desktop Navbar */}
         <nav className="hidden md:flex items-center gap-6 font-medium text-xs lg:text-sm">
           <a href="/about" className="whitespace-nowrap hover:text-[#4457ff] transition-colors">About Us</a>
           <a href="/academics" className="whitespace-nowrap hover:text-[#4457ff] transition-colors">Programs</a>
@@ -42,16 +52,97 @@ export function SpatialHeader() {
           <a href="/contact" className="whitespace-nowrap hover:text-[#4457ff] transition-colors">Enquire</a>
         </nav>
 
+        {/* Desktop CTA & Mobile Menu Toggle Button */}
         <div className="flex items-center gap-2 shrink-0">
-          <OrbitBorderButton
-            label="Apply Now"
-            link="/apply"
-            padding="6px 14px 6px 14px"
-            colors={{ fill: "#4457ff", textColor: "#ffffff" }}
-            stroke={{ color: "#7a8aff", size: 30, speed: 50 }}
-          />
+          <div className="hidden sm:block">
+            <OrbitBorderButton
+              label="Apply Now"
+              link="/apply"
+              padding="7px 16px 7px 16px"
+              colors={{ fill: "#4457ff", textColor: "#ffffff" }}
+              stroke={{ color: "#7a8aff", size: 30, speed: 50 }}
+            />
+          </div>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg text-[#181c31] hover:bg-slate-100 transition-colors focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-[#4457ff]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#181c31]" />
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Hamburger Navigation Menu Drawer */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-b border-[#e5e7eb] px-6 py-5 shadow-xl animate-in slide-in-from-top duration-200">
+          <nav className="flex flex-col space-y-3 font-medium text-sm text-[#181c31] font-body">
+            <a 
+              href="/about" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 border-b border-slate-100 hover:text-[#4457ff] transition-colors flex items-center justify-between"
+            >
+              <span>About Us</span>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </a>
+            <a 
+              href="/academics" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 border-b border-slate-100 hover:text-[#4457ff] transition-colors flex items-center justify-between"
+            >
+              <span>Academic Programs</span>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </a>
+            <a 
+              href="/facilities" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 border-b border-slate-100 hover:text-[#4457ff] transition-colors flex items-center justify-between"
+            >
+              <span>Campus Amenities</span>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </a>
+            <a 
+              href="/gallery" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 border-b border-slate-100 hover:text-[#4457ff] transition-colors flex items-center justify-between"
+            >
+              <span>Campus Life & Gallery</span>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </a>
+            <a 
+              href="/#testimonials" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 border-b border-slate-100 hover:text-[#4457ff] transition-colors flex items-center justify-between"
+            >
+              <span>Parent Voices</span>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </a>
+            <a 
+              href="/contact" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 hover:text-[#4457ff] transition-colors flex items-center justify-between"
+            >
+              <span>Enquire & Location</span>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </a>
+            
+            <div className="pt-3 border-t border-slate-200">
+              <a 
+                href="/apply" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full block py-3 bg-[#4457ff] text-white text-center rounded-xl font-semibold shadow-md hover:opacity-95 transition-all"
+              >
+                Apply for Admission 2026-27
+              </a>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
