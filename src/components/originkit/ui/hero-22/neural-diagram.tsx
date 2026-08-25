@@ -21,7 +21,7 @@ const padBox = (box: Box): Box => ({
   height: box.height * SCATTER_PAD,
 });
 
-const HEAD: Box = { left: 55, top: 90, width: 210, height: 265 };
+const HEAD: Box = { left: 83, top: 125, width: 236.264, height: 298.5 };
 const HEAD_TABLET: Box = { left: 241, top: 72, width: 261.194, height: 330 };
 const HEAD_DESKTOP: Box = {
   left: 200,
@@ -31,10 +31,10 @@ const HEAD_DESKTOP: Box = {
 };
 
 const BRAIN: Box = {
-  left: HEAD.left + 12,
-  top: HEAD.top + 14,
-  width: 165,
-  height: 140,
+  left: HEAD.left + 13.3,
+  top: HEAD.top + 16,
+  width: 183.75,
+  height: 156.75,
 };
 const BRAIN_TABLET: Box = {
   left: HEAD_TABLET.left + 14.7,
@@ -249,10 +249,11 @@ export const NeuralDiagram = () => {
   }, []);
 
   return (
-    <div
-      ref={blockRef}
-      className="relative h-[360px] sm:h-[420px] w-full max-w-[680px] mx-auto overflow-hidden bg-transparent transform scale-[0.88] xs:scale-95 sm:scale-100 origin-top flex items-center justify-center"
-    >
+    <div className="w-full max-w-[680px] mx-auto flex items-center justify-center overflow-hidden py-2">
+      <div
+        ref={blockRef}
+        className="relative w-[680px] h-[420px] shrink-0 origin-top scale-[0.48] min-[360px]:scale-[0.54] min-[400px]:scale-[0.60] min-[480px]:scale-[0.72] sm:scale-[0.85] md:scale-100 -mb-[210px] min-[360px]:-mb-[180px] min-[400px]:-mb-[160px] min-[480px]:-mb-[110px] sm:-mb-[50px] md:mb-0 transition-transform duration-200 bg-transparent"
+      >
       {/* Background arcs */}
       {ARCS.map((arc) => (
         <svg
@@ -417,6 +418,7 @@ export const NeuralDiagram = () => {
           </span>
         </div>
       ))}
+    </div>
     </div>
   );
 };

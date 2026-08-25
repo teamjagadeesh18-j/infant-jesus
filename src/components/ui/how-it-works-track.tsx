@@ -49,16 +49,16 @@ function StepRow({ step, index, progress, total }: { step: TrackStep; index: num
   const lit = useTransform(progress, [segStart, segEnd], [0, 1]);
   const scale = useTransform(lit, [0, 1], [0.5, 1]);
   const opacity = useTransform(lit, [0, 0.35, 1], [0.2, 0.55, 1]);
-  const cardX = useTransform(lit, [0, 1], [isLeft ? -20 : 20, 0]);
+  // cardX disabled on mobile to prevent line overlap
 
   return (
     // COMPACT: min-h reduced 220px -> 130px so 5 rows fit in a normal section, not a scroll-jacked page
     <div className="relative flex items-center min-h-[130px] w-full">
-      <m.div style={{ scale }} className="absolute left-5 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
+      <m.div style={{ scale }} className="absolute left-4 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center">
         <m.div style={{ opacity }} className={`w-4 h-4 rounded-full ${dotColors[theme]} shadow-[0_0_12px_2px] ring-4 ring-white dark:ring-neutral-950`} />
       </m.div>
 
-      <m.div style={{ opacity, x: cardX }} className={`w-full md:w-[42%] ${isLeft ? "md:mr-auto md:pr-10 md:text-right" : "md:ml-auto md:pl-10 md:text-left"} pl-12 md:pl-0`}>
+      <m.div style={{ opacity }} className={`w-full md:w-[42%] ${isLeft ? "md:mr-auto md:pr-10 md:text-right" : "md:ml-auto md:pl-10 md:text-left"} pl-12 md:pl-0`}>
         <div className="bg-white dark:bg-neutral-900 p-1.5 rounded-[16px] shadow-[0px_6px_14px_0px_#D3D3D3] dark:shadow-none border border-neutral-100 dark:border-neutral-800">
           <div className={`${bg} border ${border} rounded-[12px] p-3 relative overflow-hidden`}>
             <Pin className={`w-4 h-4 ${text} mb-1.5 ${isLeft ? "md:ml-auto" : ""}`} />
@@ -105,9 +105,9 @@ export default function HowItWorksTrack({
         </div>
 
         <div ref={containerRef} className="relative max-w-2xl mx-auto z-10">
-          <div className="absolute left-5 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-neutral-200 dark:bg-neutral-800 rounded-full" />
-          <m.div style={{ height: trackLength }} className="absolute left-5 md:left-1/2 -translate-x-1/2 top-0 w-[2px] bg-gradient-to-b from-orange-400 via-blue-400 to-purple-400 rounded-full origin-top z-10" />
-          <m.div style={{ top: dotTop }} className="absolute left-5 md:left-1/2 -translate-x-1/2 z-30 -mt-1.5">
+          <div className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-neutral-200 dark:bg-neutral-800 rounded-full" />
+          <m.div style={{ height: trackLength }} className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 w-[2px] bg-gradient-to-b from-orange-400 via-blue-400 to-purple-400 rounded-full origin-top z-10" />
+          <m.div style={{ top: dotTop }} className="absolute left-4 md:left-1/2 -translate-x-1/2 z-30 -mt-1.5">
             <div className="w-3 h-3 rounded-full bg-white dark:bg-black border-2 border-blue-400 shadow-[0_0_10px_2px_rgba(96,165,250,0.7)]" />
           </m.div>
 
