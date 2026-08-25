@@ -21,7 +21,7 @@ const padBox = (box: Box): Box => ({
   height: box.height * SCATTER_PAD,
 });
 
-const HEAD: Box = { left: 83, top: 125, width: 236.264, height: 298.5 };
+const HEAD: Box = { left: 55, top: 90, width: 210, height: 265 };
 const HEAD_TABLET: Box = { left: 241, top: 72, width: 261.194, height: 330 };
 const HEAD_DESKTOP: Box = {
   left: 200,
@@ -31,10 +31,10 @@ const HEAD_DESKTOP: Box = {
 };
 
 const BRAIN: Box = {
-  left: HEAD.left + 13.3,
-  top: HEAD.top + 16,
-  width: 183.75,
-  height: 156.75,
+  left: HEAD.left + 12,
+  top: HEAD.top + 14,
+  width: 165,
+  height: 140,
 };
 const BRAIN_TABLET: Box = {
   left: HEAD_TABLET.left + 14.7,
@@ -67,10 +67,10 @@ const NODES: Node[] = [
   {
     label: "Academic Excellence",
     color: "#4457ff",
-    pill: { left: 147, top: 40, width: 140 },
+    pill: { left: 85, top: 12, width: 145 },
     pillTablet: { left: 72, top: 73.5, width: 140 },
     pillDesktop: { left: 40, top: 40, width: 165 },
-    dot: { left: 195, top: 163 },
+    dot: { left: 160, top: 135 },
     dotTablet: { left: 358.22, top: 112.24 },
     dotDesktop: { left: 345, top: 90 },
     connector: {
@@ -87,10 +87,10 @@ const NODES: Node[] = [
   {
     label: "Moral & Faith Values",
     color: "#8b5cf6",
-    pill: { left: 25, top: 85, width: 150 },
+    pill: { left: 8, top: 52, width: 140 },
     pillTablet: { left: 58, top: 145, width: 150 },
     pillDesktop: { left: 10, top: 150, width: 170 },
-    dot: { left: 161.5, top: 220.75 },
+    dot: { left: 130, top: 180 },
     dotTablet: { left: 293, top: 181 },
     dotDesktop: { left: 245, top: 188 },
     connector: {
@@ -107,10 +107,10 @@ const NODES: Node[] = [
   {
     label: "Future Ready STEM",
     color: "#06b6d4",
-    pill: { left: 249, top: 92, width: 140 },
+    pill: { left: 165, top: 52, width: 140 },
     pillTablet: { left: 534, top: 156, width: 145 },
     pillDesktop: { left: 500, top: 110, width: 165 },
-    dot: { left: 220, top: 204.75 },
+    dot: { left: 180, top: 165 },
     dotTablet: { left: 357, top: 188.41 },
     dotDesktop: { left: 400, top: 154 },
     connector: {
@@ -251,7 +251,7 @@ export const NeuralDiagram = () => {
   return (
     <div
       ref={blockRef}
-      className="relative h-[420px] w-full max-w-[680px] mx-auto overflow-hidden bg-transparent"
+      className="relative h-[360px] sm:h-[420px] w-full max-w-[680px] mx-auto overflow-hidden bg-transparent transform scale-[0.88] xs:scale-95 sm:scale-100 origin-top flex items-center justify-center"
     >
       {/* Background arcs */}
       {ARCS.map((arc) => (
